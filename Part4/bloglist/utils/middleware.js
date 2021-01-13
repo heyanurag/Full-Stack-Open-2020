@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { response, request } = require('express')
 const logger = require('./logger')
 
@@ -24,6 +25,9 @@ const errorHandler = (error, request, response, next) => {
 
   next(error)
 }
+
+/* eslint-disable no-unused-vars */
+
 
 module.exports = {
   requestLogger,
