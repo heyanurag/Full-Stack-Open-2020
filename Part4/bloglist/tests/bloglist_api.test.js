@@ -14,24 +14,24 @@ beforeEach(async () => {
   const promiseArray = blogObjects.map(blog => blog.save())
   await Promise.all(promiseArray)
 })
-
-
-describe('when DB initially has some blogs', () => {
   
-  test('blogs returned in json', async () => {
-    await api
-      .get('/api/blogs')
-      .expect(200)
-      .expect('Content-Type', /application\/json/)
-  })
+test('blogs returned in json', async () => {
+  await api
+    .get('/api/blogs')
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+})
 
-  test('all blogs returned', async () => {
-    const response = await api.get('/api/blogs')
+test('all blogs returned', async () => {
+  const response = await api.get('/api/blogs')
 
-    expect(response.body).toHaveLength(helper.initialBlogs.length)
-  })
+  expect(response.body).toHaveLength(helper.initialBlogs.length)
+})
 
+test('blog contains id field (not _id)',async () => {
+  const response = await api.get('/api/blogs')
 
+  expect(response.body[0].id).toBeDefined()
 })
 
 
