@@ -28,10 +28,28 @@ test('all blogs returned', async () => {
   expect(response.body).toHaveLength(helper.initialBlogs.length)
 })
 
-test('blog contains id field (not _id)',async () => {
+test('blog contains id field (not _id)', async () => {
   const response = await api.get('/api/blogs')
 
   expect(response.body[0].id).toBeDefined()
+})
+
+test('blog is saved correctly', async () => {
+  const newBlog = {
+    title: 'Type wars',
+    author: 'Robert C.',
+    url: 'http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html',
+    likes: 200
+  }
+  
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
 })
 
 
