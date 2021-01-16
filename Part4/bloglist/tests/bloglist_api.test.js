@@ -52,6 +52,23 @@ test('blog is saved correctly', async () => {
   expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
 })
 
+test('likes property contains 0 if not defined', async () => {
+  const newBlog = {
+    title: 'Type wars',
+    author: 'Robert C.',
+    url: 'http://blog.cleancoder.com/uncle-bob/2016/05/01/TypeWars.html'
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const blogsAtEnd = await helper.blogsInDb()
+  expect(blogsAtEnd[helper.initialBlogs.length].likes).toBe(0)
+})
+
 
 afterAll(() => {
   mongoose.connection.close()
