@@ -69,6 +69,18 @@ test('likes property contains 0 if not defined', async () => {
   expect(blogsAtEnd[helper.initialBlogs.length].likes).toBe(0)
 })
 
+test('title and url properties exist or not', async () => {
+  const newBlog = {
+    author: 'Robert C.',
+    likes: 500
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(400)
+})
+
 
 afterAll(() => {
   mongoose.connection.close()
