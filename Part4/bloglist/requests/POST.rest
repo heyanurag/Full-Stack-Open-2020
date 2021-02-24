@@ -9,3 +9,17 @@ content-type: application/json
 
 ###
 GET http://localhost:3003/api/blogs
+
+###
+DELETE http://localhost:3003/api/blogs/5f88310e82c28f159c0cc68f
+
+###
+PUT http://localhost:3003/api/blogs/5ffb39bce0cf1103dfba774d
+content-type: application/json
+
+{
+    "title":"Full Stack Open",
+    "author":"Anurag",
+    "url":"https://fullstackopen.com/",
+    "likes": 11
+}
