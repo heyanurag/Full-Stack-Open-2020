@@ -2,9 +2,10 @@ POST http://localhost:3003/api/blogs
 content-type: application/json
 
 {
-    "title": "My First Blog",
-    "author": "Anurag",
-    "url": "Hello World"
+    "title": "CSS PRO TIPS you might not know!",
+    "author": "Shruti",
+    "url": "https://anurags.hashnode.dev/css-pro-tips-you-might-not-know",
+    "likes": 35
 }
 
 ###
@@ -29,7 +30,7 @@ POST http://localhost:3003/api/users
 content-type: application/json
 
 {
-    "username": "heyanurag",
-    "name": "Anurag",
-    "password": "Anurag2001"
+    "username": "heyShruti",
+    "name": "Shruti",
+    "password": "Shruti2001"
 }
